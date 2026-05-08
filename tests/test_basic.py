@@ -29,8 +29,17 @@ def test_build_argv_all_typed_flags_combine():
         sandbox=True,
         extra_args=["--custom"],
     )
-    for token in ("--model", "flash", "--approval-mode", "plan",
-                  "--include-directories", "/x", "--yolo", "--sandbox", "--custom"):
+    for token in (
+        "--model",
+        "flash",
+        "--approval-mode",
+        "plan",
+        "--include-directories",
+        "/x",
+        "--yolo",
+        "--sandbox",
+        "--custom",
+    ):
         assert token in argv
 
 
