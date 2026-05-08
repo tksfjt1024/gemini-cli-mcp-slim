@@ -11,7 +11,7 @@ A thin, auditable [MCP](https://modelcontextprotocol.io) server wrapping the [Ge
 
 Existing Gemini MCP servers tend to either hide the underlying CLI behind opaque parameters or hard-code the supported flags so new gemini CLI options require code changes. This project takes a different approach:
 
-- **Single file, ~270 lines** — auditable in one sitting
+- **Single file, ~290 lines** — auditable in one sitting
 - **One third-party dependency** (`mcp`) — minimal supply-chain surface
 - **Forward-compatible** — any new or uncommon gemini CLI flag is reachable via `extra_args` without touching this server
 - **Configurable binary path** — `$GEMINI_CMD` lets you swap or wrap the gemini binary
@@ -139,7 +139,7 @@ If a future gemini CLI release adds a new flag (say `--super-mode`), you can use
 
 | Project                      | Lines | Deps              | `include_directories` | `extra_args` passthrough |
 | ---------------------------- | ----- | ----------------- | --------------------- | ------------------------ |
-| **gemini-cli-mcp-slim** (this) | ~270  | 1 (`mcp`)         | yes                   | yes                      |
+| **gemini-cli-mcp-slim** (this) | ~290  | 1 (`mcp`)         | yes                   | yes                      |
 | eLyiN/gemini-bridge          | ~400  | 1 (`mcp`)         | no                    | no                       |
 | jamubc/gemini-mcp-tool       | (TS)  | many              | no                    | partial                  |
 
