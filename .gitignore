@@ -30,6 +30,13 @@ ENV/
 # uv (lock not committed for libraries)
 uv.lock
 
+# Claude Code per-developer / runtime state
+# (shared .claude/ config — settings.json, rules/, skills/, agents/, commands/ — stays tracked)
+CLAUDE.local.md
+.claude/worktrees/
+.claude/settings.local.json
+.claude/agent-memory-local/
+
 # IDE / editor
 .vscode/
 .idea/
