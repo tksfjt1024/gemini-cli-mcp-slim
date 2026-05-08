@@ -18,9 +18,7 @@ from unittest.mock import AsyncMock, patch
 from gemini_cli_mcp_slim.server import _run_gemini
 
 
-def _make_proc_mock(
-    *, returncode: int = 0, stdout: bytes = b"", stderr: bytes = b""
-) -> AsyncMock:
+def _make_proc_mock(*, returncode: int = 0, stdout: bytes = b"", stderr: bytes = b"") -> AsyncMock:
     proc = AsyncMock()
     proc.communicate = AsyncMock(return_value=(stdout, stderr))
     proc.returncode = returncode

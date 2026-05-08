@@ -148,8 +148,7 @@ _COMMON_PROPS: dict[str, Any] = {
         "type": "array",
         "items": {"type": "string"},
         "description": (
-            "Extra workspace directories. "
-            "Maps to gemini --include-directories (comma-joined)."
+            "Extra workspace directories. Maps to gemini --include-directories (comma-joined)."
         ),
     },
     "yolo": {"type": "boolean", "description": "Pass --yolo (auto-approve all)."},
