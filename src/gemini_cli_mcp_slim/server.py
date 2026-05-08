@@ -76,11 +76,17 @@ async def _run_gemini(
 
     logger.info("exec %s (cwd=%s, timeout=%ss)", argv, cwd_path, timeout)
 
+    # stdin must NOT inherit the parent's stdin: when this server runs over the
+    # stdio MCP transport, the parent's stdin is the JSON-RPC channel from the
+    # MCP client. Gemini CLI (Node.js) reads from stdin and applies FIONBIO
+    # (non-blocking) on it; FIONBIO is set on the open file description and
+    # therefore propagates to every FD that shares it, including the parent
+    # server's stdin. That corrupts the JSON-RPC transport and kills the server.
     try:
         proc = await asyncio.create_subprocess_exec(
             *argv,
             cwd=str(cwd_path),
-            stdin=asyncio.subprocess.PIPE if stdin_text is not None else None,
+            stdin=asyncio.subprocess.PIPE if stdin_text is not None else asyncio.subprocess.DEVNULL,
             stdout=asyncio.subprocess.PIPE,
             stderr=asyncio.subprocess.PIPE,
             env=env,
